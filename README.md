@@ -1,52 +1,63 @@
-📅# SQL-Data-Warehouse-Project
-A layered data warehouse architecture using the Medallion model (Bronze, Silver, Gold) that integrates SQL, CRM, ERP, and CSV sources. It supports ETL, data cleaning, transformation, and delivers business-ready views for BI, SQL queries, and ML.
+# 📅 SQL Data Warehouse Project
 
-#👧🏽 About me
-I’m Janhavi, an aspiring data professional with a passion for analytics. This is my first hands-on project in the data warehousing domain, built with the help of Bara Khatib Salkini’s Udemy course. I’m excited to keep learning and building scalable data solutions.
+> **A layered data warehouse architecture using the Medallion model** — **Bronze**, **Silver**, **Gold**  
+Integrates **SQL**, **CRM**, **ERP**, and **CSV** sources. Supports **ETL**, data cleaning, transformation, and delivers business-ready views for **BI**, **SQL queries**, and **ML**.
 
-#⚙️ General Principles
-Use snake_case with lowercase letters and underscores (_) to separate words.
-All names must be in English.
-Avoid using SQL reserved words as object names.
+---
 
-#🗃️ Table Naming Conventions
-🥉 -- Bronze Rules --
-Format: <sourcesystem>_<entity>
-Use the source system name and retain the original table name.
-Example: crm_customer_info → Customer info from CRM system.
+## 👧🏽 About Me
+Hi, I’m **Janhavi** — an aspiring **data professional** with a passion for analytics.  
+This is my first **hands-on data warehousing project**, inspired by **Bara Khatib Salkini’s Udemy course**.  
+💡 *I’m excited to keep learning and building scalable data solutions!*
 
-🥈 -- Silver Rules --
-Format: <sourcesystem>_<entity>
-Same as Bronze: retain original names with source system prefix.
-Example: erp_order_details → Order details from ERP system.
+---
 
-🥇 -- Gold Rules --
-Format: <category>_<entity>
-Use business-aligned names with category prefixes:
-dim_ → Dimension tables
-fact_ → Fact tables
-agg_ → Aggregated tables
+## ⚙️ General Principles
+✔ Use `snake_case` with lowercase letters and underscores (`_`)  
+✔ All names must be **in English**  
+✔ Avoid using **SQL reserved words** as object names  
 
-Examples:
-dim_customers → Customer dimension
-fact_sales → Sales fact table
-agg_sales_monthly → Monthly sales aggregation
+---
 
-#🧱 Column Naming Conventions
-🔑 -- Surrogate Keys --
-Format: <table_name>_key
-Used for primary keys in dimension tables.
-Example: customer_key in dim_customers
+## 🗃️ Table Naming Conventions
 
-🛠️ -- Technical Columns --
-Format: dwh_<column_name>
-Used for system-generated metadata.
-Example: dwh_load_date → Load timestamp
+### 🥉 Bronze Layer
+| Rule | Example |
+|------|---------|
+| Format: `<sourcesystem>_<entity>` | `crm_customer_info` → Customer info from CRM |
 
-#🧪 Stored Procedure Naming Conventions
-Format: load_<layer>
-Used for loading data into specific layers.
-Examples:
-load_bronze → Load raw data
-load_silver → Load cleaned data
-load_gold → Load business-ready views
+### 🥈 Silver Layer
+| Rule | Example |
+|------|---------|
+| Same as Bronze: `<sourcesystem>_<entity>` | `erp_order_details` → Order details from ERP |
+
+### 🥇 Gold Layer
+| Prefix | Description | Example |
+|--------|-------------|---------|
+| `dim_` | Dimension tables | `dim_customers` |
+| `fact_` | Fact tables | `fact_sales` |
+| `agg_` | Aggregated tables | `agg_sales_monthly` |
+
+---
+
+## 🧱 Column Naming Conventions
+
+### 🔑 Surrogate Keys
+- **Format**: `<table_name>_key`  
+- Example: `customer_key` in `dim_customers`
+
+### 🛠️ Technical Columns
+- **Format**: `dwh_<column_name>`  
+- Example: `dwh_load_date` → Load timestamp
+
+---
+
+## 🧪 Stored Procedure Naming Conventions
+| Format | Purpose | Example |
+|--------|---------|---------|
+| `load_bronze` | Load raw data | ✅ |
+| `load_silver` | Load cleaned data | ✅ |
+| `load_gold` | Load business-ready views | ✅ |
+
+---
+
